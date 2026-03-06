@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>子车 | 二次元ID卡</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .flip-card {
+      perspective: 1200px;
+    }
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      max-width: 380px;
+      height: 520px;
+      transition: transform 0.9s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+      transform-style: preserve-3d;
+    }
+    .flip-card:hover .flip-card-inner {
+      transform: rotateX(180deg);
+    }
+    .flip-card-front, .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 28px;
+      box-shadow: 0 0 40px rgba(255, 105, 180, 0.6);
+    }
+    .flip-card-front {
+      background: linear-gradient(135deg, #6b21a8, #ec4899, #f472b6);
+      color: white;
+    }
+    .flip-card-back {
+      background: linear-gradient(135deg, #ec4899, #6b21a8);
+      transform: rotateX(180deg);
+    }
+    .neon-text {
+      text-shadow: 0 0 15px #fff, 0 0 30px #ff69b4, 0 0 45px #ba55d3;
+    }
+    .avatar-glow {
+      box-shadow: 0 0 35px #ff69b4, inset 0 0 20px #fff;
+    }
+  </style>
+</head>
+<body class="bg-zinc-950 min-h-screen flex items-center justify-center font-sans overflow-hidden">
+  <div class="flip-card mx-auto">
+    <div class="flip-card-inner">
+      
+      <!-- 正面：可爱二次元ID卡 -->
+      <div class="flip-card-front flex flex-col items-center justify-center p-8 text-center relative overflow-hidden">
+        <div class="absolute top-6 left-6 text-xs font-bold tracking-widest neon-text">ID CARD #001</div>
+        
+        <img src="avatar.jpg" alt="你的头像" class="avatar-glow w-40 h-40 rounded-3xl object-cover border-8 border-white/40 mb-6">
+        
+        <h1 class="text-5xl font-black mb-1 neon-text">子车</h1>
+        <p class="text-xl text-pink-200 mb-2">Lv.∞ 创作系魔法师</p>
+        <p class="text-pink-100 max-w-[260px] mb-8 text-sm">喜欢画画、写故事、做梦～ 这里是我的二次元小窝！</p>
+        
+        <!-- 萌属性条 -->
+        <div class="w-full max-w-[240px] grid grid-cols-2 gap-4 text-xs">
+          <div class="bg-white/10 rounded-2xl py-2">❤️ HP: 999</div>
+          <div class="bg-white/10 rounded-2xl py-2">✨ ATK: 520</div>
+        </div>
+        
+        <div class="mt-auto text-xs text-white/60">悬停或触摸向上翻转 →</div>
+      </div>
+      
+      <!-- 背面：联系方式 -->
+      <div class="flip-card-back flex flex-col p-8 text-white">
+        <h2 class="text-3xl font-bold mb-6 text-center neon-text">联系我吧～</h2>
+        
+        <div class="space-y-6 flex-1">
+          <div class="flex items-center gap-4 text-lg">
+            📧 <a href="mailto:1635786118@qq.com" class="hover:underline">1635786118@qq.com</a>
+          </div>
+          <div class="flex items-center gap-4 text-lg">
+            📱 QQ:1635786118
+          </div>
+          <div class="flex items-center gap-4 text-lg">
+            🔗 B站：卡缪-比坦
+          </div>
+        </div>
+        
+        <!-- 社交图标（可随意加） -->
+        <div class="flex justify-center gap-8 text-4xl mb-6">
+          <a href="https://twitter.com/你的账号" target="_blank" class="hover:scale-125 transition">𝕏</a>
+          <a href="https://bilibili.com/你的空间" target="_blank" class="hover:scale-125 transition">📺</a>
+          <a href="https://github.com/你的用户名" target="_blank" class="hover:scale-125 transition">🐙</a>
+        </div>
+        
+        <!-- 博客入口 -->
+        <a href="https://你的博客链接" target="_blank" 
+           class="block text-center bg-white/20 hover:bg-white/30 py-4 rounded-3xl font-medium transition text-lg">
+          📖 进入我的二次元日记（博客）
+        </a>
+        
+        <div class="text-center text-xs text-white/50 mt-4">点击正面返回</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    tailwind.config = { content: [], theme: { extend: {} } }
+  </script>
+</body>
+</html>
