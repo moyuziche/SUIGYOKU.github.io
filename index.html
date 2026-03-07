@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SuigyokuP的专属名片 - 大崎甘奈</title>
+<title>SuigyokuP - 大崎甘奈</title>
 <style>
     /* ================================== */
     /*          网页整体星空背景设计         */
@@ -15,8 +15,8 @@
         height: 100vh;
         width: 100vw;
         overflow: hidden;
-        /* 背景稍微偏一点点紫夜空，更搭配粉色 */
-        background: radial-gradient(ellipse at bottom, #2b1b35 0%, #090a0f 100%);
+        /* 为了配合甘奈，外层星空加了一点点紫粉色的色调 */
+        background: radial-gradient(ellipse at bottom, #301f35 0%, #0d0f1a 100%);
     }
 
     .starry-background {
@@ -46,7 +46,6 @@
         100% { opacity: 1; }
     }
 
-    /* 底部群山剪影设计 */
     .mountains {
         position: absolute;
         bottom: 0;
@@ -56,18 +55,16 @@
         z-index: -1;
         pointer-events: none;
         background-image: 
-            radial-gradient(ellipse 150% 100% at 30% 100%, #05070a 40%, transparent 41%),
-            radial-gradient(ellipse 180% 120% at 80% 100%, #05070a 45%, transparent 46%),
-            radial-gradient(ellipse 200% 100% at 50% 100%, #0a0d14 35%, transparent 36%),
-            radial-gradient(ellipse 150% 90% at 10% 100%, #0a0d14 40%, transparent 41%),
-            radial-gradient(ellipse 250% 80% at 70% 100%, #10151f 30%, transparent 31%);
+            radial-gradient(ellipse 150% 100% at 30% 100%, #0a0507 40%, transparent 41%),
+            radial-gradient(ellipse 180% 120% at 80% 100%, #0a0507 45%, transparent 46%),
+            radial-gradient(ellipse 200% 100% at 50% 100%, #120910 35%, transparent 36%),
+            radial-gradient(ellipse 150% 90% at 10% 100%, #120910 40%, transparent 41%),
+            radial-gradient(ellipse 250% 80% at 70% 100%, #1a1018 30%, transparent 31%);
         background-position: bottom;
         background-repeat: no-repeat;
     }
 
-    /* ================================== */
-    /*          音乐播放按钮样式            */
-    /* ================================== */
+    /* 音乐按钮 */
     .music-btn {
         position: fixed;
         top: 20px;
@@ -86,24 +83,13 @@
         z-index: 100;
         backdrop-filter: blur(5px);
         transition: all 0.3s ease;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
     }
-    
-    .music-btn:hover {
-        background-color: rgba(255, 255, 255, 0.2);
-        transform: scale(1.1);
-    }
-
     .music-btn.playing {
-        /* 播放时按钮变为甘奈粉色 */
         background-color: rgba(245, 66, 117, 0.9); 
         box-shadow: 0 0 15px rgba(245, 66, 117, 0.6);
         animation: spin 4s linear infinite;
     }
-
-    @keyframes spin { 
-        100% { transform: rotate(360deg); } 
-    }
+    @keyframes spin { 100% { transform: rotate(360deg); } }
 
     /* ================================== */
     /*          核心卡片容器                */
@@ -126,10 +112,10 @@
         position: relative;
         width: 100%;
         height: 100%;
-        transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+        transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
         transform-style: preserve-3d;
         border-radius: 15px;
-        box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+        box-shadow: 0 15px 35px rgba(0,0,0,0.5);
     }
     .card-inner.is-flipped { transform: rotateY(180deg); }
     .card-face {
@@ -139,102 +125,111 @@
         -webkit-backface-visibility: hidden;
         backface-visibility: hidden;
         border-radius: 15px;
-        background-color: white;
         overflow: hidden;
     }
 
     /* ================================== */
-    /*          名片正面样式                */
+    /*      名片正面 (ALSTROEMERIA 风格)    */
     /* ================================== */
-    .front-bg-pink {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 58%; 
-        height: 100%;
-        /* 替换为甘奈的代表粉色 */
-        background-color: #F54275;
-        clip-path: polygon(0 0, 100% 0, 50% 100%, 0 100%);
-        background-image: linear-gradient(rgba(255,255,255,0.15) 1px, transparent 1px),
-                          linear-gradient(90deg, rgba(255,255,255,0.15) 1px, transparent 1px);
-        background-size: 10px 10px;
+    .card-front {
+        /* 柔和的粉白渐变底色 */
+        background: linear-gradient(135deg, #FFEdf2 0%, #FFC1D5 100%);
     }
     
-    .star-logo {
+    /* 纯 CSS 画的装饰性“散落花瓣” */
+    .floral-deco {
         position: absolute;
-        top: 12px;
-        left: 10px; 
-        width: 55px;
-        height: auto;
-        filter: drop-shadow(0px 0px 3px rgba(255,255,255,0.8)); 
-    }
-    
-    .tiny-text {
-        position: absolute;
-        bottom: 15px;
-        left: 10px; 
-        color: rgba(255,255,255,0.8);
-        font-size: 10px;
-        transform: scale(0.6);
-        transform-origin: left bottom;
-        white-space: nowrap;
+        top: 0; left: 0; right: 0; bottom: 0;
+        pointer-events: none;
+        z-index: 1;
+        background-image: 
+            radial-gradient(circle at 10% 20%, rgba(255,255,255,0.6) 2px, transparent 3px),
+            radial-gradient(circle at 30% 80%, rgba(255,255,255,0.5) 4px, transparent 5px),
+            radial-gradient(circle at 80% 10%, rgba(255,255,255,0.7) 3px, transparent 4px),
+            radial-gradient(circle at 90% 90%, rgba(255,255,255,0.4) 5px, transparent 6px);
     }
 
+    /* 甘奈人物立绘 - 放大并放在右侧 */
     .front-character {
         position: absolute;
-        bottom: 0;
-        /* 甘奈有手部动作，左移一点，宽度稍微调大 */
-        left: -6%; 
-        width: 63%; 
-        height: 95%;
-        /* 替换为你上传的图片名 */
+        bottom: -5%; /* 稍微下沉一点 */
+        right: -10%; /* 偏右侧放置 */
+        width: 65%; /* 占比例大一点 */
+        height: 110%;
         background-image: url('SCAmana.png'); 
         background-size: contain;
-        background-position: bottom center;
+        background-position: bottom right;
         background-repeat: no-repeat;
         z-index: 2;
-        filter: drop-shadow(4px 4px 4px rgba(0,0,0,0.25));
+        /* 柔和的阴影 */
+        filter: drop-shadow(-3px 5px 5px rgba(245, 66, 117, 0.3));
     }
 
-    .front-content {
+    /* 左侧的信息浮窗 (类似手账贴纸的感觉) */
+    .front-info-panel {
         position: absolute;
-        top: 0;
-        right: 0;
-        width: 65%; 
-        height: 100%;
-        padding: 15px 15px 15px 0;
+        top: 10%;
+        left: 5%;
+        width: 55%;
+        height: 80%;
+        background: rgba(255, 255, 255, 0.85); /* 半透明白底 */
+        backdrop-filter: blur(4px);
+        border-radius: 12px;
+        padding: 15px;
         box-sizing: border-box;
+        z-index: 3;
         display: flex;
         flex-direction: column;
         justify-content: center;
-        align-items: flex-end;
-        text-align: right;
-        z-index: 3;
+        /* 增加粉色细边框 */
+        border: 1px solid rgba(245, 66, 117, 0.2);
+        box-shadow: 2px 2px 10px rgba(0,0,0,0.05);
     }
-    .name-section h2 { margin: 0 0 5px 0; font-size: 24px; color: #111; font-weight: 900; }
-    .name-section p { margin: 2px 0; font-size: 9px; color: #777; font-weight: bold; }
+
+    .name-section h2 { 
+        margin: 0 0 5px 0; 
+        font-size: 22px; 
+        /* 名字颜色改为了较深的粉紫色 */
+        color: #d81b60; 
+        font-weight: 900; 
+        letter-spacing: 0.5px;
+    }
+    .name-section p { 
+        margin: 2px 0; 
+        font-size: 9px; 
+        color: #888; 
+        font-weight: bold; 
+    }
     
+    .socials { 
+        margin-top: 12px;
+        font-size: 9px; 
+        color: #555; 
+        line-height: 1.6; 
+    }
+    .socials div { display: flex; align-items: center; gap: 5px; }
+    /* 小图标颜色 */
+    .socials span { font-weight: bold; color: #F54275; }
+
     .nfc-section {
+        position: absolute;
+        bottom: 10px;
+        right: 15px;
         font-size: 8px;
-        color: #999;
-        margin-top: 10px;
-        margin-bottom: 10px;
+        color: #aaa;
         display: flex;
         align-items: center;
         gap: 5px;
         font-weight: bold;
         animation: breathing 2.5s infinite;
+        z-index: 4; /* 确保在人物上层 */
     }
     @keyframes breathing {
         0% { opacity: 0.5; }
         50% { opacity: 1; transform: scale(1.02); }
         100% { opacity: 0.5; }
     }
-    .nfc-icon { color: #F54275; /* NFC图标也跟着变粉色 */ font-size: 12px; }
-
-    .socials { font-size: 9px; color: #444; line-height: 1.6; }
-    .socials div { display: flex; justify-content: flex-end; align-items: center; gap: 5px; }
-    .socials span { font-weight: bold; font-style: italic; }
+    .nfc-icon { color: #F54275; font-size: 12px; }
 
     /* ================================== */
     /*          名片背面样式                */
@@ -243,63 +238,68 @@
         transform: rotateY(180deg);
         display: flex;
         flex-direction: column;
+        background-color: white;
     }
-    .qr-code {
+    
+    /* 283 Logo 终于放在背面了，放在左上角 */
+    .back-logo {
         position: absolute;
         top: 15px;
-        right: 15px;
-        width: 45px;
-        height: 45px;
-        background-image: url('space.bilibili.com_488509701.png');
-        background-size: cover;
+        left: 15px; /* 改到了左上角 */
+        width: 60px; /* 稍微放大一点 */
+        height: auto;
+        opacity: 0.8; 
+        z-index: 5;
     }
     
     .back-top { 
         padding: 15px; 
+        padding-left: 85px; /* 给左侧的 Logo 留出空间 */
         height: 44%; 
         box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
-    .back-top p { margin: 3px 0; font-size: 9px; color: #555; font-weight: bold; }
+    .back-top p { margin: 2px 0; font-size: 9px; color: #555; font-weight: bold; }
     
     .back-bottom {
         height: 56%; 
-        /* 背面底色替换为甘奈粉色 */
+        /* 纯正的 ALSTROEMERIA 粉色 */
         background-color: #F54275;
         color: white;
         background-image: 
             repeating-linear-gradient(
                 -45deg,
-                rgba(0, 0, 0, 0.05),
-                rgba(0, 0, 0, 0.05) 3px,
+                rgba(255, 255, 255, 0.05),
+                rgba(255, 255, 255, 0.05) 3px,
                 transparent 3px,
                 transparent 8px
             ),
-            /* 右下角的暗调也随之改为深粉色 */
             radial-gradient(circle at bottom right, #c2185b, transparent 80%);
             
         display: flex;
         flex-direction: column;
         justify-content: center;
-        align-items: flex-start;
-        padding-left: 20px;
+        /* 背面大字改回右对齐，显得更特别 */
+        align-items: flex-end; 
+        padding-right: 20px;
         font-family: 'Arial Black', Impact, sans-serif;
         font-size: 40px;
         font-weight: 900;
         font-style: italic;
         line-height: 0.85;
         letter-spacing: -1px;
-        text-shadow: 4px 4px 0px #1a1a1a;
+        /* 白字加上淡粉色的阴影，更梦幻 */
+        text-shadow: 4px 4px 0px rgba(0,0,0,0.15);
     }
 </style>
 </head>
 <body>
 
-<!-- 星空背景层 -->
 <div class="starry-background"></div>
-<!-- 底部群山剪影层 -->
 <div class="mountains"></div>
 
-<!-- 音乐播放器 -->
 <audio id="bgMusic" loop>
     <source src="bgm.mp3" type="audio/mpeg">
 </audio>
@@ -307,51 +307,54 @@
 
 <div class="card-wrapper" id="draggableCard">
     <div class="card-inner" id="cardInner">
-        <!-- 名片正面 -->
+        
+        <!-- 名片正面：花组风格全新设计 -->
         <div class="card-face card-front">
-            <div class="front-bg-pink">
-                <img src="IDOLMASTER20THLogo.png" class="star-logo" alt="20th Logo">
-                <!-- 更新事务所英文名称 -->
-                <div class="tiny-text">283 PRODUCTION PRODUCER CARD</div>
-            </div>
+            <!-- 背景花瓣装饰 -->
+            <div class="floral-deco"></div>
+            <!-- 甘奈立绘 -->
             <div class="front-character"></div>
-            <div class="front-content">
+            
+            <!-- 左侧手账风信息面板 -->
+            <div class="front-info-panel">
                 <div class="name-section">
                     <h2>SuigyokuP</h2>
-                    <!-- 更新事务所和担当偶像名称 -->
                     <p>283プロデューサー科</p>
                     <p>大崎甘奈担当プロデューサー</p>
                 </div>
-                <div class="nfc-section">
-                    TAP TO START <span class="nfc-icon">N))</span>
-                </div>
+                
                 <div class="socials">
                     <div><span>@:</span> Rain Grain</div>
                     <div><span>✉:</span> 1635786118@QQ.com</div>
                     <div><span>B:</span> space.bilibili.com/488509701</div>
                 </div>
             </div>
+
+            <div class="nfc-section">
+                TAP TO START <span class="nfc-icon">N))</span>
+            </div>
         </div>
 
         <!-- 名片背面 -->
         <div class="card-face card-back">
-            <div class="qr-code"></div>
+            <!-- 283 Logo 显示在左上角！ -->
+            <img src="900px-283Pro_Logo.png" class="back-logo" alt="283 Pro Logo" onerror="this.style.display='none'; alert('没找到Logo图片，请检查文件名是否完全一致！');">
+            
             <div class="back-top">
-                <!-- 更新背面的基本信息 -->
                 <p>283 PRODUCTION</p>
                 <p>OSAKI AMANA</p>
                 <p>AGE 17</p>
-                <p style="margin-top: 15px;">笑顔の花を咲かせましょう！</p>
+                <p style="margin-top: 15px; color:#d81b60;">笑顔の花を咲かせましょう！</p>
             </div>
             <div class="back-bottom">
                 PRODUCER<br>CARD
             </div>
         </div>
+        
     </div>
 </div>
 
 <script>
-    // === 音乐播放控制 ===
     const musicToggle = document.getElementById('musicToggle');
     const bgMusic = document.getElementById('bgMusic');
     let isPlaying = false;
@@ -376,7 +379,6 @@
         isPlaying = !isPlaying;
     });
 
-    // === 🔥终极全端兼容拖拽引擎 🔥 ===
     const dragItem = document.getElementById('draggableCard');
     const cardInner = document.getElementById('cardInner');
     
@@ -387,7 +389,6 @@
     let initialY;
     let xOffset = -175; 
     let yOffset = -100;
-    
     let clickStartTime;
 
     function dragStart(e) {
